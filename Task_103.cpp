@@ -91,7 +91,7 @@ bool initializeSDL(SDL_Window** window, SDL_Renderer** renderer) {
         return false;
     }
 
-    *window = SDL_CreateWindow("Collision of the Circles", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Screen_Width, Screen_Height, SDL_WINDOW_SHOWN);
+    *window = SDL_CreateWindow("TASK 103 : Collision of the Circles", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Screen_Width, Screen_Height, SDL_WINDOW_SHOWN);
     if (*window == NULL) {
         printf("Window Creation Has Failed: %s\n", SDL_GetError());
         return false;

@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     SDL_Event event;
     bool running = true;
     int radius = 40;
-    int radiusIncrease = 5; 
+    int radiusIncrease = 10; 
     while (running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
@@ -57,7 +57,7 @@ bool initializeSDL(SDL_Window** window, SDL_Renderer** renderer) {
         return false;
     }
 
-    *window = SDL_CreateWindow("Draw_Circle", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Screen_Width, Screen_Height, SDL_WINDOW_SHOWN);
+    *window = SDL_CreateWindow("TASK 102 : Expanding Circle", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Screen_Width, Screen_Height, SDL_WINDOW_SHOWN);
     if (*window == NULL) {
         printf("Window Creation Has Failed: %s\n", SDL_GetError());
         return false;
