@@ -7,6 +7,10 @@
 bool game_is_running=false;
 SDL_Window *window=NULL;
 SDL_Renderer *renderer=NULL;
+int red_color_code=0;
+Uint32 starttime;
+Uint32 currenttime;
+
 
 bool initializeWindow(void) {
     if(SDL_Init(SDL_INIT_VIDEO)<0) {
@@ -47,8 +51,24 @@ void process_input(void) {
     }
 }
 
+void increment_variable() {
+    red_color_code=red_color_code+35;
+
+    if (red_color_code>=256) red_color_code=0;
+}
+
+void update(void) {
+    currenttime=SDL_GetTicks();
+    Uint32 elapsed_time=currenttime-starttime;
+
+    if(elapsed_time>=500) {
+        increment_variable();
+        starttime=currenttime;
+    }
+}
+
 void draw(void) {
-    SDL_SetRenderDrawColor(renderer,255,255,255,255);
+    SDL_SetRenderDrawColor(renderer,red_color_code,20,205,255);
 
     SDL_RenderClear(renderer);
 
@@ -63,8 +83,12 @@ void destroyWindow(void) {
 
 int main(int arg,char **argv) {
     game_is_running=initializeWindow();
+    starttime=SDL_GetTicks();
     while(game_is_running) {
         process_input();
+
+        update();
+
         draw();
     }
     destroyWindow();
